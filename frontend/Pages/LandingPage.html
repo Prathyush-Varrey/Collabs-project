@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collabs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080808;
+            color: aliceblue;
+            font-family: "Poppins", sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Scroll Bar */
+        ::-webkit-scrollbar{
+          width: 4px;
+          border-radius: 25px;
+        }
+        /* ṭrack */
+        ::-webkit-scrollbar-track{
+          background-color: #ddd;
+          border-radius: 10px;
+        }
+        /* thumb */
+        ::-webkit-scrollbar-thumb{
+               background-color: #888;
+               border-radius: 25px;
+        }
+        /* Piece */
+        ::-webkit-scrollbar-track-piece {
+               background: #f1f1f1; /* color of the track piece */
+          }
+
+/* Scrollbar corner (where both vertical and horizontal scrollbars meet) */
+          ::-webkit-scrollbar-corner {
+               background: #f1f1f1; /* color of the scrollbar corner */
+          }
+
+          .fade-in {
+               opacity: 0;
+               transform: translateY(20px);
+               transition: opacity 1s ease-out , transform 1s ease-out;
+          }
+
+          .fade-in.active {
+               opacity: 1;
+               transform: translateY(0);
+          }
+
+        /* Hero-Section */
+        #hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            row-gap: 20px;
+        }
+
+        #main-textContainer {
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
+        }
+
+        .animate-text {
+            font-size: 4.5rem;
+            opacity: 0;
+            animation: fade-in 2s ease-in-out 3s forwards;
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            animation: fade-in 2s ease-in-out 3s forwards;
+            opacity: 0;
+        }
+
+        #hero-btns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #signup, #login {
+            padding: 10px 20px;
+            background-color: #333;
+            color: aliceblue;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        #signup:hover, #login:hover {
+            background-color: #555;
+        }
+
+        /* About Us Section Styling */
+        #aboutus {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #aboutus h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #aboutus p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #ddd;
+        }
+
+        /* Version Releases Section Styling */
+        #version-releases {
+            padding: 50px 20px;
+            text-align: center;
+            /* background-color: #121212; */
+            color: #ddd;
+        }
+
+        #version-releases h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            
+        }
+
+        #version-releases p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+
+        #version-releases h4 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+            animation: fade-in 2s ease-in-out 3s forwards;
+            opacity: 0;
+        }
+
+        #version-releases ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #version-releases li {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            animation: fade-in 2s ease-in-out 3s forwards;
+            opacity: 0;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #080808;
+            color: #888;
+        }
+
+        hr {
+            width: 80%;
+            margin: 20px auto;
+            border: none;
+            height: 2px;
+            background-color: #dddddd96;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <main class="fade-in" id="hero-section">
+        <div id="main-textContainer">
+            <h1 class="animate-text">Collabs</h1>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; row-gap: 25px;">
+            <p>Hey! 👋</p>
+            <div id="hero-btns">
+               <button id="signup" onclick="signUP()">Get Started ➡️</button>
+               <button id="login" onclick="login()">Login ➡️</button>
+            </div>
+        </div>
+    </main>
+
+    <hr>
+
+    <!-- About Us Section -->
+    <div class="fade-in" id="aboutus">
+          <h1>About Us</h1>
+          <p>
+              At Collabs, we believe that great teamwork is the key to success.
+              Our platform is designed to bring teams together, helping them 
+              collaborate efficiently, stay organized, and communicate 
+              seamlessly. Whether you're managing tasks, attending meetings, 
+              or brainstorming with your team, Collabs provides the tools you
+              need—all in one place.
+          </p>
+          <p>
+              With our Task Manager, you can prioritize work, 
+              assign responsibilities, and track progress with ease. 
+              Our Video Conferencing service ensures you can connect 
+              with your team anywhere, anytime, making remote collaboration
+              as effective as in-person meetings.
+          </p>
+          <p>
+              At Collabs, we're committed to making teamwork simple, 
+              productive, and enjoyable. Let's build something great, together!
+          </p>
+    </div>
+
+    <hr>
+
+    <!-- Version Releases -->
+    <div class="fade-in" id="version-releases">
+          <h1>Upcoming Versions</h1>
+          <p>We're excited to launch Version 1 (V1) of Collabs, where our primary focus is on delivering a powerful Task Manager. In this initial release, our goal is to simplify task management for teams, helping them stay organized, meet deadlines, and work more efficiently.</p>
+          <p>
+              <h4>With the Task Manager You Can</h4>
+              <p>
+               <ul>
+                    <li>Create and assign tasks to team members</li>
+                    <li>Set deadlines and priorities to keep your team on track</li>
+                    <li>Monitor progress and ensure accountability</li>
+                    <li>Organize tasks by projects for better clarity and focus</li>
+               </ul>
+              </p>
+          </p>
+          <p>This is just the beginning. As we grow, we'll continue adding features like Video Conferencing, Team Chat, and more collaboration tools to make Collabs the go-to platform for teams of all sizes. Stay tuned for future updates as we expand our platform and bring even more ways to help teams work smarter, together.</p>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        &copy; 2024 Collabs. All Rights Reserved.
+    </footer>
+
+    <script>
+          function signUP(){
+               window.location.href='SignUp.html'
+          }
+
+          function login(){
+               window.location.href='Login.html'
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                          entry.target.classList.add('active');
+                    }
+               });
+          }, { threshold: 0.5 });
+
+               document.querySelectorAll('.fade-in').forEach(section => {
+               observer.observe(section);
+               });
+    </script>
+</body>
+</html>

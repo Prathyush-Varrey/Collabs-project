@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collabs | Sign Up</title>
+    <!-- Google Fonts for Poppins -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;display=swap');
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    
+    <!-- Styling -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212; /* Monochromatic dark background */
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+        }
+
+        #OutterDiv {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2#signup-txt {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        label {
+            font-size: 1rem;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #f5f5f5;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #252525;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button#loginBtn {
+            background-color: transparent;
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            margin-top: 20px;
+        }
+
+        button#loginBtn:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #aaaaaa;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="OutterDiv">
+        <div id="innerdiv-1">
+            <h2 id="signup-txt">Sign Up</h2>
+            <div class="userName">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" placeholder="Enter Given Name *"/>
+            </div>
+            <div class="familyName">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" placeholder="Enter your Family Name *">
+            </div>
+            <div class="userMail">
+                <label for="email">Email :</label>
+                <input type="text" name="email" id="email" placeholder="Enter Your Email *">
+            </div>
+            <div class="password">
+                <label for="loginPassword">Password:</label>
+                <input type="password" name="password" id="loginPassword" placeholder="Enter Password *">
+            </div>
+            <div>
+                <button id="signUPBTN" onclick="signup()">Create Account</button>
+                <div>
+                    <p>Already have an account?</p>
+                    <button id="loginBtn" onclick="login()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            window.location.href = "Login.html";
+        }
+
+        async function signup() {
+            let firstName = document.getElementById('firstName').value.trim();
+            let lastName = document.getElementById('lastName').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let password = document.getElementById('loginPassword').value.trim();
+
+            if (!firstName || !lastName || !email || !password) {
+                alert('Please fill all the required fields!');
+                return;
+            }
+
+            try {
+                let response = await axios.post('http://localhost:3000/api/user/signup', {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                });
+
+                alert("Account Created! Redirecting to login page...");
+                setTimeout(() => {
+                    window.location.href = "Login.html";
+                }, 1000);  // Simulates the redirect after signup
+            } catch (error) {
+                console.error('Error during signup:', error);
+                alert('Failed to create account. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
